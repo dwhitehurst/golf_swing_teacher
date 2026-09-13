@@ -1,0 +1,98 @@
+* { box-sizing: border-box; }
+:root {
+  --bg: #0d1014;
+  --card: #161b21;
+  --card2: #1d242c;
+  --text: #edf2f7;
+  --muted: #aab6c3;
+  --border: #2b3642;
+  --accent: #78adff;
+  --note: #11161c;
+}
+html,body { margin:0; background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+body { min-height:100vh; }
+.app { max-width:1500px; margin:0 auto; padding:18px; }
+.topbar { display:flex; justify-content:space-between; align-items:flex-start; gap:18px; margin-bottom:16px; }
+h1 { margin:0; font-size:1.75rem; }
+.subtitle { color:var(--muted); margin:5px 0 0; }
+.top-actions { display:flex; gap:10px; align-items:center; }
+.segmented { display:inline-flex; border:1px solid var(--border); border-radius:11px; overflow:hidden; }
+.seg { border:0; border-radius:0; background:#202831; }
+.seg.active { background:#36475a; box-shadow:inset 0 -2px 0 var(--accent); }
+.viewer-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.panel { background:var(--card); border:1px solid var(--border); border-radius:15px; padding:12px; min-width:0; }
+.panel-header { display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin-bottom:10px; }
+.panel-header h2 { margin:0; font-size:1.05rem; }
+.small-status { font-size:.82rem; color:var(--muted); }
+.image-stage {
+  position:relative;
+  width:100%;
+  height:clamp(380px,52vh,650px);
+  overflow:hidden;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:#000;
+}
+.layer {
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:contain;
+  background:#000;
+}
+.overlay-label {
+  position:absolute; top:10px; left:10px;
+  border:1px solid rgba(255,255,255,.20);
+  border-radius:999px;
+  background:rgba(0,0,0,.58);
+  padding:5px 9px;
+  font-weight:750;
+}
+.teaching-card {
+  margin-top:10px;
+  min-height:220px;
+  background:var(--note);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:13px 15px;
+}
+.teaching-card h3 { margin:0 0 8px; font-size:1rem; }
+.teaching-card ul { margin:0; padding-left:20px; }
+.teaching-card li { margin:0 0 7px; line-height:1.35; }
+.teaching-card .why {
+  margin:10px 0 0;
+  padding-top:9px;
+  border-top:1px solid var(--border);
+  color:#cbd6e2;
+  line-height:1.4;
+}
+.teaching-card .why strong { color:var(--text); }
+.controls { margin-top:16px; background:var(--card); border:1px solid var(--border); border-radius:15px; padding:16px; }
+.position-readout { display:flex; align-items:baseline; gap:15px; margin-bottom:10px; }
+.big-readout { font-size:2rem; font-weight:850; }
+.position-name { font-weight:700; }
+.small-readout { color:var(--muted); font-size:.9rem; margin-top:2px; }
+#positionSlider { width:100%; }
+.tick-row { display:grid; grid-template-columns:repeat(10,1fr); gap:4px; color:var(--muted); font-size:.82rem; margin-top:4px; }
+.tick-row span { text-align:center; }
+.button-row { display:flex; flex-wrap:nowrap; gap:9px; align-items:center; margin:11px 0; }
+.button-row.wrap { flex-wrap:wrap; }
+button,select {
+  background:#29333e; color:var(--text);
+  border:1px solid #3a4653; border-radius:9px;
+  padding:9px 12px; font:inherit; cursor:pointer;
+}
+button.secondary { background:#202831; }
+button:hover,select:hover { filter:brightness(1.08); }
+label { display:inline-flex; align-items:center; gap:6px; }
+.p-buttons { display:grid; grid-template-columns:repeat(10,1fr); gap:7px; margin-top:12px; }
+.p-buttons button { padding:9px 5px; }
+.source-note { margin:13px 0 0; color:var(--muted); font-size:.83rem; line-height:1.35; }
+dialog { border:0; padding:0; background:transparent; }
+.dialog-card { width:min(660px,92vw); background:var(--card2); color:var(--text); border:1px solid var(--border); border-radius:15px; padding:19px; }
+.dialog-card h2 { margin-top:0; }
+@media(max-width:950px) {
+  .viewer-grid { grid-template-columns:1fr; }
+  .topbar { flex-direction:column; }
+  .p-buttons { grid-template-columns:repeat(5,1fr); }
+  .image-stage { height:clamp(360px,58vh,620px); }
+}

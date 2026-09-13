@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Golf Swing Teaching Viewer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div>
+      <h1>Golf Swing Teaching Viewer</h1>
+      <p class="subtitle">P1–P10 · synchronized Face-On and Down-The-Line views</p>
+    </div>
+
+    <div class="top-actions">
+      <div class="segmented" aria-label="Image set">
+        <button id="drawingsBtn" class="seg active">Drawings</button>
+        <button id="photosBtn" class="seg">Photos</button>
+      </div>
+      <button id="helpBtn" class="secondary">Help</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="viewer-grid">
+      <article class="panel">
+        <div class="panel-header">
+          <h2>Face-On</h2>
+          <span id="foStatus" class="small-status"></span>
+        </div>
+        <div class="image-stage" id="foStage">
+          <img id="foBase" class="layer" alt="Face-on swing position" />
+          <img id="foNext" class="layer" alt="Face-on next swing position" />
+          <div class="overlay-label" id="foLabel">P1</div>
+        </div>
+        <section class="teaching-card" id="foNotes"></section>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <h2>Down-The-Line</h2>
+          <span id="dtlStatus" class="small-status"></span>
+        </div>
+        <div class="image-stage" id="dtlStage">
+          <img id="dtlBase" class="layer" alt="Down-the-line swing position" />
+          <img id="dtlNext" class="layer" alt="Down-the-line next swing position" />
+          <div class="overlay-label" id="dtlLabel">P1</div>
+        </div>
+        <section class="teaching-card" id="dtlNotes"></section>
+      </article>
+    </section>
+
+    <section class="controls">
+      <div class="position-readout">
+        <div class="big-readout" id="positionReadout">P1</div>
+        <div>
+          <div class="position-name" id="positionName">Address</div>
+          <div class="small-readout" id="blendReadout">Position 1.00</div>
+        </div>
+      </div>
+
+      <div class="slider-wrap">
+        <input id="positionSlider" type="range" min="1" max="10" step="0.01" value="1" />
+        <div class="tick-row">
+          <span>P1</span><span>P2</span><span>P3</span><span>P4</span><span>P5</span>
+          <span>P6</span><span>P7</span><span>P8</span><span>P9</span><span>P10</span>
+        </div>
+      </div>
+
+      <div class="button-row">
+        <button id="prevBtn">◀ Prev</button>
+        <button id="playBtn">Play</button>
+        <button id="nextBtn">Next ▶</button>
+        <button id="snapBtn" class="secondary">Snap to nearest P</button>
+        <button id="resetBtn" class="secondary">Reset</button>
+      </div>
+
+      <div class="button-row wrap">
+        <label><input type="checkbox" id="showLabels" checked /> P labels</label>
+        <label><input type="checkbox" id="showNotes" checked /> Teaching notes</label>
+        <label>Playback
+          <select id="speedSelect">
+            <option value="75">Slow</option>
+            <option value="45" selected>Medium</option>
+            <option value="25">Fast</option>
+          </select>
+        </label>
+        <label>Arrow-key step
+          <select id="jumpSize">
+            <option value="0.01">Fine</option>
+            <option value="0.05" selected>Small</option>
+            <option value="0.1">Medium</option>
+            <option value="1">Whole P</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="p-buttons" id="pButtons"></div>
+
+      <p class="source-note">
+        Teaching text is a concise transcription/summary of the position descriptions in your uploaded PGA Tour Average Model video.
+        Numerical-angle-heavy material was intentionally minimized.
+      </p>
+    </section>
+  </main>
+</div>
+
+<dialog id="helpDialog">
+  <form method="dialog" class="dialog-card">
+    <h2>Controls</h2>
+    <ul>
+      <li>Drag the slider to dissolve continuously between adjacent P positions.</li>
+      <li>Click P1–P10 for exact checkpoints.</li>
+      <li>Left/Right arrows make fine adjustments.</li>
+      <li>Press <strong>P</strong> to play/pause, <strong>S</strong> to snap, and <strong>R</strong> to reset.</li>
+      <li>Use <strong>Drawings / Photos</strong> to switch reference sets without changing position.</li>
+    </ul>
+    <menu><button value="cancel">Close</button></menu>
+  </form>
+</dialog>
+
+<script src="notes.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
